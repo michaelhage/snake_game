@@ -39,13 +39,55 @@ export const FoodDot = styled.div`
     left: ${props => props.left};
 `
 
-export const GridSquares = styled.div`
-    display: inline-block;
-    height: 2vw;
-    width: 2vw;
+export const GameOverContainer = styled.div`
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background-color: #256ce1;
+    
+    border: .5vmin solid black;
+    height: 25vmin;
+    width: 20vmin;
 
-    /* border: 2px solid blue; */
-    margin: 0 0 0 0;
-    background-color: #ccc;
+    z-index: 999;
+`;
+
+export const GameOverText = styled.h1`
+    font-size: 3vmin;
+
+    color: #fff;
+    /* background-color: #256ce1; */
+
+    margin: 2vmin auto 2vmin auto;
+    text-align: center;
+`
+
+export const ResetButton = styled.div`
+    /* border-radius: 4px; */
+    background: #256ce1;
+    padding: 4vmin 4vmin 4vmin 4vmin;
+    
+    max-height: 12vmin;
+    width: 100%;
+
+    color: #fff;
+    outline: none;
+    
+    /* border: none; */
+    cursor: pointer;
+    
+    text-align: center;
+
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    
+    &:hover {
+    transition: all 0.3s ease-in-out;
+    /* background: #fff; */
+    color: #000;
+    }
 `
 

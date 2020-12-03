@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import { GameContainer } from './GeneralElements'
 import Grid from "../components/Game/Grid"
+import GameOver from '../components/Game/GameOver'
 
 export default class Game extends Component {
     
@@ -29,6 +30,7 @@ export default class Game extends Component {
             // refresh time of game
             speed: 200,
 
+            gameOver: false,
         }
 
         this.onKeyPress = this.onKeyPress.bind(this)
@@ -58,8 +60,9 @@ export default class Game extends Component {
     }
 
     moveSnake(){
+        let gameOver = this.state.gameOver
 
-        if(this.state.snakePos){
+        if(!gameOver){
             let snake = this.state.snakePos
             let head = snake[snake.length - 1]
 
@@ -70,8 +73,10 @@ export default class Game extends Component {
             ]
             
             if(this.checkCollision(newHead, snake)){
-                
-                this.resetGame()
+                this.setState({
+                    gameOver: true,
+                })
+                // this.resetGame()
             }
 
             else{
@@ -79,7 +84,13 @@ export default class Game extends Component {
                     && newHead[1] === this.state.foodPos[1]){
                     
                     snake.push(newHead)
-                    this.randomFoodPlacement()
+                    
+                    // max length of snake
+                    if(snake.length === 2025){
+
+                    } else {
+                        this.randomFoodPlacement()
+                    }
                 } else{
                     // push new head into front of array
                     snake.push(newHead)
@@ -106,6 +117,8 @@ export default class Game extends Component {
                 [18,10],
             ],
             snakeDirection: [2,0],
+            
+            gameOver: false,
         })
 
         // reset food placement
@@ -184,6 +197,12 @@ export default class Game extends Component {
                     foodPos={this.state.foodPos}
                     snakePos={this.state.snakePos}
                 />
+                {this.state.gameOver && 
+                    <GameOver 
+                        resetGame={this.resetGame}
+                        score={this.state.snakePos.length}
+                    />
+                }
             </GameContainer>
         )
     }
