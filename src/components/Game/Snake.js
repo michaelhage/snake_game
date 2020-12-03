@@ -3,16 +3,21 @@ import { SnakeDot } from './GridElements'
 
 function Snake(props) {
 
-    const arr = props.snakePos.map((dot, index) => {
+    // console.log(props)
 
-        return(
-            <SnakeDot
-                key={index}
-                top={"" + dot[0] + "%"}
-                left={"" + dot[1] + "%"}
-            />
-        )
-    })
+    var arr = []
+    if(props.snakePos){
+        arr = props.snakePos.map((dot, index) => {
+
+            return(
+                <SnakeDot
+                    key={index}
+                    left={"" + dot[0] + "%"}
+                    top={"" + dot[1] + "%"}
+                />
+            )
+        })
+    }
 
     return (
         arr

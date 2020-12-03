@@ -17,18 +17,23 @@ export const SnakeDot = styled.div`
     position: absolute;
 
     background-color: #00f;
+    
     border: .1vmin solid black;
     height: 2%;
     width: 2%;
+    
     top: ${props => props.top};
     left: ${props => props.left};
 `
 
-export const Food = styled.div`
+export const FoodDot = styled.div`
     position: absolute;
 
     background-color: #ff0;
-    border: .25vmin solid black;
+    
+    border: .1vmin solid black;
+    height: 2%;
+    width: 2%;
 
     top: ${props => props.top};
     left: ${props => props.left};

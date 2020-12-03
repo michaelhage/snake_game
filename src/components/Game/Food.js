@@ -1,18 +1,14 @@
 import React from 'react'
 
-function Food(foodPos) {
+import {FoodDot} from "./GridElements"
 
-    var food = <></>;
-
-    if(foodPos){
-        food = <Food 
-            top={foodPos[0] + "%"}
-            left={foodPos[1] + "%"}
-        /> 
-    }
+function Food(props) {
 
     return (
-        food
+        <FoodDot
+            left={"" + props.foodPos[0] + "%"}
+            top={"" + props.foodPos[1] + "%"}
+        /> 
     )
 }
 
