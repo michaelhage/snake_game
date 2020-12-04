@@ -9,8 +9,11 @@ function GameOver(props) {
     return (
         <GameOverContainer>
             <GameOverText>
-                You Lose!!!
+                
+                {props.isWin ? "  You Win!!!  " : "  You Lose!!!  "}
+                
                 Score: {props.score}
+
             </GameOverText>
 
             <ResetButton

@@ -31,6 +31,7 @@ export default class Game extends Component {
             speed: 200,
 
             gameOver: false,
+            isWin: false,
         }
 
         this.onKeyPress = this.onKeyPress.bind(this)
@@ -71,6 +72,9 @@ export default class Game extends Component {
                 head[0] + vector[0],
                 head[1] + vector[1]   
             ]
+
+            let gameOver = this.state.gameOver
+            let isWin = this.state.isWin
             
             if(this.checkCollision(newHead, snake)){
                 this.setState({
@@ -85,9 +89,12 @@ export default class Game extends Component {
                     
                     snake.push(newHead)
                     
-                    // max length of snake
-                    if(snake.length === 2025){
-
+                    // max length of snake 2025
+                    if(snake.length === 100){
+                        
+                        gameOver = true
+                        isWin = true
+                        
                     } else {
                         this.randomFoodPlacement()
                     }
@@ -100,7 +107,11 @@ export default class Game extends Component {
                 }
 
                 // set new snake position 
-                this.setState({snakePos: snake})
+                this.setState({
+                    snakePos: snake,
+                    gameOver: gameOver,
+                    isWin: isWin,
+                })
             }
         }
     }
@@ -119,6 +130,7 @@ export default class Game extends Component {
             snakeDirection: [2,0],
             
             gameOver: false,
+            isWin: false,
         })
 
         // reset food placement
@@ -144,22 +156,31 @@ export default class Game extends Component {
 
 
     onKeyPress(e){
-        if(e.keyCode === 37 || e.keyCode === 65){
+        
+        let code
+        
+        if(e.keyCode){
+            code = e.keyCode
+        } else {
+            code = e
+        }
+
+        if(code === 37 || code === 65){
             
-            // up
+            // left
             this.setState({snakeDirection: [-2,0]})
         } 
-        else if(e.keyCode === 38 || e.keyCode === 87){
+        else if(code === 38 || code === 87){
             
-            // down
+            // up
             this.setState({snakeDirection: [0,-2]})
         }
-        else if(e.keyCode === 39 || e.keyCode === 68){
+        else if(code === 39 || code === 68){
             
             // right
             this.setState({snakeDirection: [2,0]})
         }
-        else if(e.keyCode === 40 || e.keyCode === 83){
+        else if(code === 40 || code === 83){
             // down
             this.setState({snakeDirection: [0,2]})
         }
@@ -196,10 +217,12 @@ export default class Game extends Component {
                 <Grid 
                     foodPos={this.state.foodPos}
                     snakePos={this.state.snakePos}
+                    onKeyPress={this.onKeyPress}
                 />
                 {this.state.gameOver && 
                     <GameOver 
                         resetGame={this.resetGame}
+                        isWin={this.state.isWin}
                         score={this.state.snakePos.length}
                     />
                 }

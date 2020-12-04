@@ -18,13 +18,13 @@ function Sidebar({isOpen, toggle}){
 
             <SidebarWrapper>
                 <SidebarMenu> 
-                    <SidebarLink to="/create-quiz" onClick={toggle}>Create Quiz</SidebarLink>
-                    <SidebarLink to="/about-us" onClick={toggle}>About Us</SidebarLink>
+                    <SidebarLink to="#" onClick={toggle}>Portfolio</SidebarLink>
+                    <SidebarLink to="/about-us" onClick={toggle}>About</SidebarLink>
                     <SidebarLink to="/contact-us" onClick={toggle}>Contact Us</SidebarLink>
-                    <SidebarLink to="/whatever" onClick={toggle}>Whatever</SidebarLink>
+                    
                 </SidebarMenu>
                 <SideBtnWrap>
-                    <SidebarRoute to="/play-quiz">Play Quiz</SidebarRoute>
+                    <SidebarRoute to="/">Play Game</SidebarRoute>
                 </SideBtnWrap>
             </SidebarWrapper>
         </SidebarContainer>

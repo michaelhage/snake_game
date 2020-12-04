@@ -23,30 +23,27 @@ function Navbar({toggle}) {
         <div>
             <Nav>
                 <NavLink to='/'>
-                    <h1>QuizGame</h1>
+                    <h1>SnakeGame</h1>
                 </NavLink>
                 <MobileIcon onClick={toggle}>
                     <FaBars />
                 </MobileIcon>
                 <NavMenu>
                     <NavLink to="/create-quiz" activeStyle>
-                    Create Quiz
+                    Portfolio
                     </NavLink>
                 
                     <NavLink to="/about-us" activeStyle>
-                    About Us
+                    About
                     </NavLink>
                 
                     <NavLink to="/contact-us" activeStyle>
                     Contact Us
                     </NavLink>
 
-                    <NavLink to="/whatever" activeStyle>
-                    Whatever
-                    </NavLink>
                 </NavMenu>
                 <NavBtn>
-                    <NavBtnLink to="/play-quiz">Play Quiz</NavBtnLink>
+                    <NavBtnLink to="/">Play Game</NavBtnLink>
                 </NavBtn>
 
 
