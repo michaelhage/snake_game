@@ -1,13 +1,15 @@
 import React from 'react'
 import {BiReset} from 'react-icons/bi'
 
-import { GameOverContainer, GameOverText, ResetButton } from './GridElements'
+import { MenuContainer, GameOverText, ResetButton } from './GridElements'
 
 
 function GameOver(props) {
 
     return (
-        <GameOverContainer>
+        <MenuContainer
+            zIndex={3}
+        >
             <GameOverText>
                 
                 {props.isWin ? "  You Win!!!  " : "  You Lose!!!  "}
@@ -21,7 +23,7 @@ function GameOver(props) {
             >
                 <BiReset size={"4vmin"}/>
             </ResetButton>
-        </GameOverContainer>
+        </MenuContainer>
     )
 }
 

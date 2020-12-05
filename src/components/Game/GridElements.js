@@ -1,13 +1,15 @@
 import styled from 'styled-components'
 
 export const GridContainer = styled.div`
-    background-color: #555;
+    background-color: ${props => props.isDark ? "#555" : "#999"};
 
     position: absolute;
 
     width: calc(100vmin - 80px);
     height: calc(100vmin - 80px);
     
+    border: ${props => props.isDark ? "none" : ".2vmin solid red"};
+
     /* display: grid; */
     /* grid-template-rows: repeat(40, 1fr); */
     /* grid-template-columns: repeat(40, 1fr); */
@@ -39,7 +41,7 @@ export const FoodDot = styled.div`
     left: ${props => props.left};
 `
 
-export const GameOverContainer = styled.div`
+export const MenuContainer = styled.div`
     position: absolute;
     
     top: 50%;
@@ -52,8 +54,8 @@ export const GameOverContainer = styled.div`
     height: 25vmin;
     width: 20vmin;
 
-    z-index: 3;
-`;
+    z-index: ${props => props.zIndex};
+`
 
 export const GameOverText = styled.h1`
     font-size: 3vmin;
@@ -109,10 +111,12 @@ export const MobileArrowUp = styled.div`
 
     padding: 1vmin 0;
 
+    cursor: pointer;
+
     text-align: center;
     justify-content: center;
 
-    height: 5vmin;
+    height: 15vmin;
     width: calc(100vmin - 80px);
 
 
@@ -123,20 +127,20 @@ export const MobileArrowUp = styled.div`
 export const MobileArrowLeft = styled.div`
     position: relative;
 
-    /* margin: auto; */
     left: 0;
-    top: 0;
 
     /* calculation for padding center */
-    /* 90/2 - 2 * (5 / 2) = 40 */
+    /* 70/2 = 35 */
     /* 80 / 2 = 40 */
-    padding: calc(40vmin - 40px) 0;
+    padding: calc(35vmin - 40px) 1vmin;
 
-    text-align: center;
+    text-align: left;
     justify-content: center;
 
-    height: calc(90vmin - 80px);
-    width: 5vmin;
+    cursor: pointer;
+
+    height: calc(70vmin - 80px);
+    width: 15vmin;
 
     /* background-color: purple;  */
     opacity: 100%;
@@ -148,12 +152,14 @@ export const MobileArrowDown = styled.div`
     /* margin: auto; */
     bottom: 0;
 
-    padding: 1vmin 0;
+    padding: 11vmin 0 0 0;
 
     text-align: center;
     justify-content: center;
 
-    height: 5vmin;
+    cursor: pointer;
+
+    height: 15vmin;
     width: calc(100vmin - 80px);
 
     /* background-color: green;  */
@@ -167,12 +173,17 @@ export const MobileArrowRight = styled.div`
     right: 0;
     /* top: 5vmin; */
     
-    padding: calc(40vmin - 40px) 1vmin;
+    padding: calc(35vmin - 40px) 1vmin;
 
     float: right;
 
-    height: calc(90vmin - 80px);
-    width: 5vmin;
+    cursor: pointer;
+
+    text-align: right;
+    justify-content: center;
+
+    height: calc(70vmin - 80px);
+    width: 15vmin;
 
     opacity: 100%;
     /* background-color: yellow; */

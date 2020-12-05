@@ -6,10 +6,10 @@ import MobileButtons from './MobileButtons';
 
 function Grid(props) {
 
-    // console.log(props)
-
     return (
-        <GridContainer>
+        <GridContainer
+            isDark={props.isDark}
+        >
             <MobileButtons 
                 onKeyPress={props.onKeyPress}
             />

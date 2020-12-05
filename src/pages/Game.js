@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { GameContainer } from './GeneralElements'
 import Grid from "../components/Game/Grid"
 import GameOver from '../components/Game/GameOver'
+import Menu from '../components/Menu/Menu'
+import DarkMode from '../components/Menu/DarkMode'
 
 export default class Game extends Component {
     
@@ -32,6 +34,8 @@ export default class Game extends Component {
 
             gameOver: false,
             isWin: false,
+
+            isDark: true,
         }
 
         this.onKeyPress = this.onKeyPress.bind(this)
@@ -40,6 +44,7 @@ export default class Game extends Component {
         this.moveSnake = this.moveSnake.bind(this)
         this.resetGame = this.resetGame.bind(this)
         this.checkCollision = this.checkCollision.bind(this)
+        this.toggleDarkMode = this.toggleDarkMode.bind(this)
     }
     
     componentDidMount(){
@@ -90,7 +95,7 @@ export default class Game extends Component {
                     snake.push(newHead)
                     
                     // max length of snake 2025
-                    if(snake.length === 100){
+                    if(snake.length - 5 === 100){
                         
                         gameOver = true
                         isWin = true
@@ -210,22 +215,36 @@ export default class Game extends Component {
         return false
     }
 
+    toggleDarkMode(){
+        this.setState( prevState => ({
+            isDark: !prevState.isDark
+        }))
+    }
+
     render() {
 
         return (
-            <GameContainer>
+            <GameContainer
+                isDark={this.state.isDark}
+            >
                 <Grid 
                     foodPos={this.state.foodPos}
                     snakePos={this.state.snakePos}
                     onKeyPress={this.onKeyPress}
+                    isDark={this.state.isDark}
                 />
                 {this.state.gameOver && 
                     <GameOver 
                         resetGame={this.resetGame}
                         isWin={this.state.isWin}
-                        score={this.state.snakePos.length}
+                        score={this.state.snakePos.length - 5}
                     />
                 }
+                {/* <Menu /> */}
+                <DarkMode 
+                    toggleDarkMode={this.toggleDarkMode}
+                    isDark={this.state.isDark}
+                />
             </GameContainer>
         )
     }

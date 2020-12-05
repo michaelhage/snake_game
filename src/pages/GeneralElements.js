@@ -5,7 +5,7 @@ export const GameContainer = styled.div`
     
     height: calc(100vh - 80px);
     width: 100vw;
-    background-color: #111;
+    background-color: ${props => props.isDark ? "#111" : "whitesmoke"};
     
     display: flex;
     justify-content: center;

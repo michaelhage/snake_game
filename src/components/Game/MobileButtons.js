@@ -19,28 +19,36 @@ function MobileButtons(props) {
 
     return (
         <MobileArrowContainer>
-            <MobileArrowUp>
+            <MobileArrowUp
+                onClick={()=>handleClick(38)}
+            >
                 <AiOutlineArrowUp 
                     size={"3vmin"}
-                    onClick={()=>handleClick(38)}
+                    color={"white"}
                 />
             </MobileArrowUp>
-            <MobileArrowRight>
+            <MobileArrowRight
+                onClick={()=>handleClick(39)}
+            >
                 <AiOutlineArrowRight 
                     size={"3vmin"}
-                    onClick={()=>handleClick(39)}
+                    color={"white"}
                 />
             </MobileArrowRight>
-            <MobileArrowLeft>
+            <MobileArrowLeft
+                onClick={()=>handleClick(37)}
+            >
                 <AiOutlineArrowLeft 
                     size={"3vmin"}
-                    onClick={()=>handleClick(37)}
+                    color={"white"}
                 />
             </MobileArrowLeft>
-            <MobileArrowDown>
+            <MobileArrowDown
+                onClick={()=>handleClick(40)}
+            >
                 <AiOutlineArrowDown 
                     size={"3vmin"}
-                    onClick={()=>handleClick(40)}
+                    color={"white"}
                 />
             </MobileArrowDown>
         </MobileArrowContainer>
